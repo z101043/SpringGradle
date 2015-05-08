@@ -1,0 +1,78 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+// 의존성 설정에 사용할 프로퍼티
+ext {
+    javaVersion   = '1.7'
+    springVersion = '4.0.9.RELEASE'
+}
+
+sourceCompatibility = javaVersion // 소스코드의 자바 문법 버전
+targetCompatibility = javaVersion
+version = '1.0'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8' // 소스파일의 인코딩 형식 지정
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral() // Maven 중앙 서버를 저장소로 지정. 서버의 기본 URL은 http://repo1.maven.org/maven2 이다
+	// flatDir() : 로컬 폴더를 저장소로 지정
+	// ivy() : Apache Ivy 서버를 저장소로 지정
+	// jcenter() : Bintray의 jcenter 서버를 저장소로 지정
+	// mavenLocal() : Maven로컬 임시 보관소를 저장소로 지정
+}
+
+dependencies {
+	// compile : 라이브러리를 comileJava 작업을 수행할 때 사용
+	// runtime : 라이브러리를 실행 시에 사용
+	// testCompile : 라이브러리를 compileTestJava 작업을 수행할 때 사용. 이 작업은 complieJava를 포함하고 있으므로 complie한 라이브러리는 제외하고 적음
+	// testRuntime : 라이브러리를 test 작업을 수행할 때 사용. 이작업은 complieJava, compileTestJava 작업을 포함하고 있으므로 complie, testCompile 한 라이브러리는 제외하고 적음
+	// providedCompile : compile과 같다. 다만 .war 파일에는 포함되지 않는다.
+	// providedRuntime : runtime과 같다. 다만 .war 파일에는 포함되지 않는다.
+	// 라이브러리 표기법
+	// 1. 'group:name:version:classifier' - 의존성 프로퍼티 사용시 ""으로 사용
+	// 2. group: '그룹명', name: '라이브러리 이름', version: '버전', classifier: '분류 점미사'
+	// name값을 제외하면 꼭 적을 필요는 없다.
+	compile "javax.servlet:jstl:1.2", 
+				"org.springframework:spring-webmvc:${springVersion}", 
+				"org.springframework:spring-jdbc:${springVersion}", 
+				"org.springframework:spring-tx:${springVersion}", 
+				"commons-dbcp:commons-dbcp:1.4", 
+				"ch.qos.logback:logback-classic:1.0.6"
+	providedCompile "javax.servlet:javax.servlet-api:3.0.1", 
+							 "javax.servlet.jsp:jsp-api:2.1"
+    testCompile "junit:junit:4.+", 
+    				  "org.springframework:spring-test:${springVersion}"
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+
+// uploadArchives {} : 아카이브파일(.jar) 배포
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
+
+eclipse {
+    classpath {
+        downloadSources = true
+    }
+    wtp {
+        // .settings 폴더의 org.eclipse.wst.common.project.facet.core.xml 파일을 설정한다.
+        facet {
+            facet name: 'jst.web' , version: '3.0.1' // Servlet Spec Version 지정
+            facet name: 'jst.java' , version: '1.7' // Java Version 지정, 1.7 ...
+        }
+    }
+}
