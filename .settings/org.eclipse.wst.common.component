@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="2.0">
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
 	<wb-module deploy-name="SpringGradle">
 		<property name="context-root" value="SpringGradle"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
@@ -32,10 +31,7 @@
 		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/ranestar/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-entitymanager/4.3.9.Final/9c4a7e0e3c8bc102cf15deb19f6271287290e30b/hibernate-entitymanager-4.3.9.Final.jar">
 			<dependency-type>uses</dependency-type>
 		</dependent-module>
-		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/ranestar/.gradle/caches/modules-2/files-2.1/com.h2database/h2/1.4.187/f6b109788d196430458309ea28ce9a77830b3ed8/h2-1.4.187.jar">
-			<dependency-type>uses</dependency-type>
-		</dependent-module>
-		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/ranestar/.gradle/caches/modules-2/files-2.1/org.hsqldb/hsqldb/2.3.2/970fd7b8f635e2c19305160459649569655b843c/hsqldb-2.3.2.jar">
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/ranestar/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.35/b6ac941b7288376a7e8bc6490264bbd4427fb94e/mysql-connector-java-5.1.35.jar">
 			<dependency-type>uses</dependency-type>
 		</dependent-module>
 		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/ranestar/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.0.9.RELEASE/295ecbf61e2313b4472947a1b3084022ba09e524/spring-beans-4.0.9.RELEASE.jar">
