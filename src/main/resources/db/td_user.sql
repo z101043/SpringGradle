@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS `td_user` (
+  `user_id` VARCHAR(50) NOT NULL,
+  `user_pw` VARCHAR(50) NOT NULL,
+  `user_nm` VARCHAR(50) NOT NULL, 
+  `user_tel` VARCHAR(20) NOT NULL,
+  `email` VARCHAR(50) NOT NULL, 
+  `pw_question` VARCHAR(20) NOT NULL, 
+  `pw_answer` VARCHAR(250) NOT NULL, 
+  `reg_id` VARCHAR(250) DEFAULT NULL,
+  `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+  PRIMARY KEY (`user_id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
